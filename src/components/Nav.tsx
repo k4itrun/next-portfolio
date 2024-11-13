@@ -1,11 +1,13 @@
 import { headerConfig, metaConfig } from '@k4itrunconfig';
 import { useTheme } from "@/context/ThemeProvider";
+
 import Button from "@/components/client/Button";
 import tailwindConfig from 'tailwind.config';
 
 import { useState } from "react";
 import { useRouter } from 'next/router';
 import { TransitionChild, Transition } from "@headlessui/react";
+
 import Link from "next/link";
 import tinycolor from "tinycolor2";
 
@@ -22,7 +24,7 @@ const colorOptions = [
     { name: "Cyan", hex: "#00FFFF" },
 ];
 
-export default function Nav() {
+const Nav = () => {
     const router = useRouter();
     
     const [heartColor, setHeartColor] = useState<string>(tailwindConfig.theme.extend.colors['color-layout']);
@@ -250,3 +252,5 @@ export default function Nav() {
         </>
     );
 }
+
+export default Nav;

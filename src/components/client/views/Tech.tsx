@@ -1,6 +1,6 @@
-import { technologiesConfig } from '@k4itrunconfig';
+import { technologiesConfig as tech } from '@k4itrunconfig';
 
-export default function Tech() {
+const Tech = () => {
   return (
     <>
       <div className="mx-auto max-w-7xl my-24">
@@ -22,9 +22,9 @@ export default function Tech() {
         </h1>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-12">
           {
-            technologiesConfig ?
-              technologiesConfig ? (
-                technologiesConfig.map((tech, index) => (
+            tech ?
+              tech ? (
+                tech.map((tech, index) => (
                   <div key={index} className="group flex justify-between items-center relative bg-gray-600/5 dark:shadow-2xl overflow-hidden border border-gray-500/25 hover:border-color-layout hover:shadow-xl rounded-lg p-2.5 transition-all duration-200">
                     <img
                       src={tech.src}
@@ -58,3 +58,5 @@ export default function Tech() {
     </>
   );
 };
+
+export default Tech;

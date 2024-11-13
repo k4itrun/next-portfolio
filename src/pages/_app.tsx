@@ -18,6 +18,58 @@ import Head from 'next/head';
 
 import { useEffect, useState } from 'react';
 
+const renderContextMenu = ({
+  hasBack,
+  hasForward,
+  goBack,
+  goForward,
+  refreshPage,
+  viewGithub,
+  viewYoutube
+}: EventActions) => {
+  const renderMenuItem = (icon: JSX.Element, text: string, kbd: string[] = [], onClick: () => void) => (
+    <><MenuItem icon={icon} text={text} kbd={kbd} onClick={onClick} /></>
+  );
+  return (
+    <>
+      <div>
+        {hasBack && renderMenuItem(
+          <i className="fa fa-arrow-left" />,
+          "Back",
+          ["Alt", "◀"],
+          goBack,
+        )}
+        {hasForward && renderMenuItem(
+          <i className="fa fa-arrow-right" />,
+          "Forward",
+          ["Alt", "▶"],
+          goForward,
+        )}
+        {renderMenuItem(
+          <i className="fa fa-redo" />,
+          "Refresh",
+          ["Ctrl", "R"],
+          refreshPage,
+        )}
+      </div>
+      <div className="pt-3">
+        {renderMenuItem(
+          <i className="fab fa-github" />,
+          "Github",
+          [],
+          viewGithub
+        )}
+        {renderMenuItem(
+          <i className="fab fa-youtube" />,
+          "YouTube",
+          [],
+          viewYoutube
+        )}
+      </div>
+    </>
+  );
+}
+
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   const betters = ['design', 'write', 'develop', 'moderate', 'create', 'explore', 'collaborate'];
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,61 +77,6 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
     const randomBetter = betters[Math.floor(Math.random() * betters.length)];
     return randomBetter || "default";
   });
-
-  function renderContextMenu({
-    hasBack,
-    hasForward,
-    goBack,
-    goForward,
-    refreshPage,
-    viewGithub,
-    viewYoutube
-  }: EventActions) {
-
-    const renderMenuItem = (icon: JSX.Element, text: string, kbd: string[] = [], onClick: () => void) => (
-      <MenuItem icon={icon} text={text} kbd={kbd} onClick={onClick} />
-    );
-
-    return (
-      <>
-        <div>
-          {hasBack && renderMenuItem(
-            <i className="fa fa-arrow-left" />, 
-            "Back", 
-            ["Alt", "◀"],
-            goBack, 
-          )}
-          {hasForward && renderMenuItem(
-            <i className="fa fa-arrow-right" />, 
-            "Forward", 
-            ["Alt", "▶"],
-            goForward, 
-          )}
-          {renderMenuItem(
-            <i className="fa fa-redo" />, 
-            "Refresh",
-            ["Ctrl", "R"],
-            refreshPage, 
-          )}
-        </div>
-        <div className="pt-3">
-          {renderMenuItem(
-            <i className="fab fa-github" />, 
-            "Github", 
-            [],
-            viewGithub
-          )}
-          {renderMenuItem(
-            <i className="fab fa-youtube" />, 
-            "YouTube", 
-            [], 
-            viewYoutube
-          )}
-        </div>
-      </>
-    );
-  }
-
 
   useEffect(() => {
     setBetter(better);

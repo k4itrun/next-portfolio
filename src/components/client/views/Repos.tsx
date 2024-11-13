@@ -6,10 +6,9 @@ import Tippy from "@tippyjs/react";
 interface RepositoriesProps {
     repositories: Repository[] | null;
     _repositories?: Repository[] | any;
-
 }
 
-export default function Repos({ repositories, _repositories }: RepositoriesProps) {
+const Repos = ({ repositories, _repositories }: RepositoriesProps) => {
     return (
         <>
             <div className="mx-auto max-w-7xl my-24">
@@ -149,3 +148,5 @@ export default function Repos({ repositories, _repositories }: RepositoriesProps
         </>
     );
 };
+
+export default Repos;

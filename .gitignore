@@ -29,4 +29,4 @@ template.tsx
 
 # Folder for temporary files (e.g., file uploads)
 tmp/
-src/pages/*[id]*/
+src/pages/api/*[id]*/

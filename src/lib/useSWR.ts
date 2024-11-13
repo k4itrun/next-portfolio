@@ -1,5 +1,6 @@
 import { SWRData } from "@/interfaces";
 import { SWRConfig } from '@k4itrunconfig';
+
 import useSWR, { SWRResponse } from 'swr';
 import axios from 'axios';
 
@@ -11,7 +12,7 @@ axios.interceptors.request.use((config) => {
   return Promise.reject(error);
 });
 
-export default function SWR<T = SWRData>(url: string): SWRResponse<T | null, any> {
+const SWR = <T = SWRData>(url: string): SWRResponse<T | null, any> => {
   const fetcher = (href: string) =>
     axios
       .get(href)
@@ -22,3 +23,5 @@ export default function SWR<T = SWRData>(url: string): SWRResponse<T | null, any
 
   return useSWR<T | null>(url, fetcher, { refreshInterval: SWRConfig.interval });
 }
+
+export default SWR;

@@ -1,13 +1,14 @@
 import { FooterProps } from "@/interfaces";
-import tailwindConfig from 'tailwind.config';
 import { metaConfig } from "@k4itrunconfig";
+
+import tailwindConfig from 'tailwind.config';
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const randomColor = (): string => '#' + Array.from({ length: 6 }, () => '0123456789ABCDEF'[Math.floor(Math.random() * 16)]).join('');
 
-export default function Footer({ better }: FooterProps) {
+const Footer = ({ better }: FooterProps) => {
     const [heartColor, setHeartColor] = useState<string>(tailwindConfig.theme.extend.colors['color-layout']);
 
     useEffect(() => {
@@ -44,3 +45,5 @@ export default function Footer({ better }: FooterProps) {
         </footer>
     );
 }
+
+export default Footer;

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
 import { EventActions, ContextMenuProps, ItemProps } from "@/interfaces";
-import KeyShortcut from "../KeyShortcut";
+import KeyShortcut from "@/components/client/KeyShortcut";
 
-export function ContextMenu({ content, children }: ContextMenuProps) {
+import { useEffect, useState } from "react";
+
+export const ContextMenu = ({ content, children }: ContextMenuProps) => {
     const [isBackEnabled, setIsBackEnabled] = useState(false);
     const [isForwardEnabled, setIsForwardEnabled] = useState(false);
 
@@ -66,7 +67,7 @@ export function ContextMenu({ content, children }: ContextMenuProps) {
     );
 }
 
-export function MenuItem({ icon, text, kbd, onClick, ...props }: ItemProps) {
+export const MenuItem = ({ icon, text, kbd, onClick, ...props }: ItemProps) => {
     return (
         <div className="text-sm flex flex-col" onClick={onClick} {...props}>
             <div className="flex gap-2 justify-between items-center w-full hover:bg-black/5 dark:hover:bg-white/5 p-2 px-4 transition-all duration-200">

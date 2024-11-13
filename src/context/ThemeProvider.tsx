@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export function useTheme(): ThemeContextType {
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
@@ -12,7 +12,7 @@ export function useTheme(): ThemeContextType {
   return context;
 }
 
-export function ThemeProvider({ children }: ThemeProviderProps) {
+export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [selectedTheme, setSelectedTheme] = useState<Theme>('dark');
   const [selectedColor, setSelectedColor] = useState<Color>({ name: "Green", hex: "#00FF00" });
   const [isInitialized, setIsInitialized] = useState<boolean>(false);
@@ -93,14 +93,16 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   };
 
   return (
-    <ThemeContext.Provider value={{
-      selectedTheme: selectedTheme,
-      toggleTheme: toggleTheme,
-      setTheme: changeTheme,
-      selectedColor: selectedColor,
-      setColor: changeColor,
-    }}>
-      {children}
-    </ThemeContext.Provider>
+    <>
+      <ThemeContext.Provider value={{
+        selectedTheme: selectedTheme,
+        toggleTheme: toggleTheme,
+        setTheme: changeTheme,
+        selectedColor: selectedColor,
+        setColor: changeColor,
+      }}>
+        {children}
+      </ThemeContext.Provider>
+    </>
   );
 }

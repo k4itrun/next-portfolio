@@ -6,7 +6,7 @@ import { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
 import axios from 'axios';
 
 export default function MyDocument({ profile }: MyDocumentProps) {
-  const avatarUrl = profile?.discord_user?.avatar
+  const avatar = profile?.discord_user?.avatar
     ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}`
     : "https://github.githubassets.com/favicons/favicon.png";
 
@@ -18,7 +18,7 @@ export default function MyDocument({ profile }: MyDocumentProps) {
         <meta name="description" content={headerConfig.description} />
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
         <link href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" rel="stylesheet" />
-        <link rel="icon" href={avatarUrl} type="image/x-icon" />
+        <link rel="icon" href={avatar} type="image/x-icon" />
       </Head>
       <body>
         <Main />

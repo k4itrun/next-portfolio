@@ -1,8 +1,8 @@
 import { Profile, Repository } from "@/interfaces";
 
-import ProfileComponent from "@/components/Profile";
-import ReposComponent from "@/components/Repos";
-import TechsComponent from "@/components/Tech";
+import ProfileComponent from "@/components/client/views/Profile";
+import ReposComponent from "@/components/client/views/Repos";
+import TechsComponent from "@/components/client/views/Tech";
 
 import useSWR from '@/lib/useSWR';
 

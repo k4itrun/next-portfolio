@@ -1,8 +1,12 @@
-import React from "react";
 import { KeyKeyShortcutProps } from "@/interfaces";
 
-export default function KeyShortcut({ keys, ...extraAttributes }: KeyKeyShortcutProps) {
-    const keyElements = keys.reduce<React.ReactNode[]>((acc, key, idx) => {
+import { ReactNode } from "react";
+
+const KeyShortcut = ({
+    keys,
+    ...extraAttributes
+}: KeyKeyShortcutProps) => {
+    const keyElements = keys.reduce<ReactNode[]>((acc, key, idx) => {
         if (idx > 0) acc.push(<span key={`separator-${idx}`}>+</span>);
         acc.push(<span key={`key-${idx}`}>{key}</span>);
         return acc;
@@ -17,3 +21,5 @@ export default function KeyShortcut({ keys, ...extraAttributes }: KeyKeyShortcut
         </div>
     );
 }
+
+export default KeyShortcut;

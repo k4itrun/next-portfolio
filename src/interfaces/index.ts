@@ -1,16 +1,16 @@
-export * from './components/gloweffect';
-export * from './components/button';
-export * from './components/contextmenu';
-export * from './components/keyshortcut';
-export * from './components/footer';
+export * from '@/interfaces/components/gloweffect';
+export * from '@/interfaces/components/button';
+export * from '@/interfaces/components/contextmenu';
+export * from '@/interfaces/components/keyshortcut';
+export * from '@/interfaces/components/footer';
 
-export * from './context/pageprovider';
-export * from './context/themeprovider';
+export * from '@/interfaces/context/pageprovider';
+export * from '@/interfaces/context/themeprovider';
 
-export * from './lib/mouse';
-export * from './lib/progress';
-export * from './lib/swr';
+export * from '@/interfaces/lib/mouse';
+export * from '@/interfaces/lib/progress';
+export * from '@/interfaces/lib/swr';
 
-export * from './pages/index';
+export * from '@/interfaces/pages/pages';
 
-export * from './config/config';
+export * from '@/interfaces/config/config';

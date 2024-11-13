@@ -5,14 +5,14 @@ import { useEffect, useRef } from 'react';
 import NProgress from 'nprogress';
 import Router from 'next/router';
 
-export default function NextNProgress({
+const NextNProgress = ({
   color = tailwindConfig.theme.extend.colors['color-layout'],
   startPosition = 0.3,
   stopDelayMs = 200,
   height = 3,
   showOnShallow = true,
   options,
-}: NextNProgressProps) {
+}: NextNProgressProps) => {
   const timer = useRef<NodeJS.Timeout | null>(null);
 
   const routeChangeStart = (_: string, { shallow }: { shallow: boolean }) => {
@@ -61,3 +61,5 @@ export default function NextNProgress({
     `}</style>
   );
 }
+
+export default NextNProgress;

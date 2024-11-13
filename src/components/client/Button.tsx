@@ -2,13 +2,13 @@ import { ButtonProps } from "@/interfaces";
 
 type ButtonState = "loading" | "disabled" | "success" | "error" | "default";
 
-export default function Button({
+const Button = ({
   children,
   className = "",
   disabled = false,
   state = "default",
   ...props
-}: ButtonProps & { state?: ButtonState }) {
+}: ButtonProps & { state?: ButtonState }) => {
 
   const baseClasses = "px-4 py-2 rounded-lg min-h-[44px] relative overflow-hidden transition-all duration-200";
   
@@ -38,3 +38,5 @@ export default function Button({
     </button>
   );
 };
+
+export default Button;

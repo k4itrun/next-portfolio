@@ -1,7 +1,8 @@
 import { MousePosition } from "@/interfaces";
+
 import { useEffect, useState, useRef } from "react";
 
-export default function useMousePosition(): MousePosition {
+const useMousePosition = (): MousePosition => {
   const [mousePosition, setMousePosition] = useState<MousePosition>({
     x: null,
     y: null,
@@ -42,3 +43,5 @@ export default function useMousePosition(): MousePosition {
 
   return mousePosition;
 }
+
+export default useMousePosition;

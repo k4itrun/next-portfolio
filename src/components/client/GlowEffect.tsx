@@ -1,10 +1,11 @@
 "use client";
 
 import { GlowEffectProps } from "@/interfaces";
+
 import { useEffect, useState } from "react";
 import Tilt from "react-parallax-tilt";
 
-export default function GlowEffect({ children, className }: GlowEffectProps) {
+const GlowEffect = ({ children, className }: GlowEffectProps) => {
   const [enabled, setEnabled] = useState<boolean>(false);
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
@@ -47,3 +48,5 @@ export default function GlowEffect({ children, className }: GlowEffectProps) {
     </Tilt>
   );
 }
+
+export default GlowEffect;
