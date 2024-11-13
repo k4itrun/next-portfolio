@@ -48,9 +48,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/k4itrun/k4itrun.github.io.git"
+    "url": "git+https://github.com/k4itrun/next-portfolio.git"
   },
   "bugs": {
-    "url": "https://github.com/k4itrun/k4itrun.github.io/issues"
+    "url": "https://github.com/k4itrun/next-portfolio/issues"
   }
 }

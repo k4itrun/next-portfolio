@@ -11,7 +11,7 @@ export const metaConfig: MetaConfig = {
     accounts: {
         github: {
             username: "k4itrun",
-            repo: "k4itrun.github.io",
+            repo: "next-portfolio",
             url: `https://github.com/k4itrun`,
         },
         discord: {
