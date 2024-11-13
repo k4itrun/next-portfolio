@@ -42,15 +42,18 @@
   --color-text-idle: rgb(255, 187, 0);
   --color-text-offline: #727272;
 
+  
 }
 
 body {
+  --icon-unknown-color: black;
   background: var(--color-bg-light);
   color: var(--color-text-light);
   overflow-x: hidden !important;
 }
 
 .dark body {
+  --icon-unknown-color: white;
   background: var(--color-bg-dark);
   color: var(--color-text-dark);
   overflow-x: hidden !important;

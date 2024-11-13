@@ -127,7 +127,7 @@ const Profile = ({ profile, _profile }: ProfileProps) => {
                     <div className="flex flex-col lg:flex-row items-center lg:items-start">
                       <Tippy
                         content={
-                          activity && activity.assets ? (
+                          activity && activity.name ? (
                             <ActivityTooltip
                               activity={activity}
                               elapsedActivityTime={elapsedActivityTime}
