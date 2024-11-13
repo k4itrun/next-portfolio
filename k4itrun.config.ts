@@ -7,7 +7,6 @@ export const metaConfig: MetaConfig = {
     description: "Currently working on various projects. Stay tuned for updates.",
     shortDescription: "Random developer from this planet.",
     webhook: process.env.WEBHOOK,
-    url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : `http://localhost:${process.env.PORT || 3000}`,
     accounts: {
         github: {
             username: "k4itrun",

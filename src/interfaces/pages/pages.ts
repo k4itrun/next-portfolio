@@ -140,10 +140,6 @@ export interface MyAppProps {
     pageProps: Record<string, any>;
 }
 
-export interface MyDocumentProps {
-    profile: Profile | null;
-}
-
 export interface ErrorProps {
     statusCode: number;
 }

@@ -1,14 +1,25 @@
-import { MyDocumentProps, LanyardResponse } from "@/interfaces";
+import { LanyardResponse } from "@/interfaces";
 import { metaConfig } from '@k4itrunconfig';
-import tailwindConfig from 'tailwind.config';
+import fetch from 'sync-fetch';
 
 import { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import axios from 'axios';
 
-export default function MyDocument({ profile }: MyDocumentProps) {
-  const avatar = profile?.discord_user?.avatar
-    ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}`
-    : "https://github.githubassets.com/favicons/favicon.png";
+const getAvatar = (): string => {
+  const defaultAvatar = "https://github.githubassets.com/favicons/favicon.png";
+  try {
+    const { data }: LanyardResponse = fetch(`https://api.lanyard.rest/v1/users/${metaConfig.accounts.discord.id}`).json();
+    const profile = data;
+    if (profile.discord_user?.avatar && profile.discord_user.id) {
+      return `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}`;
+    }
+    return defaultAvatar;
+  } catch (error) {
+    return defaultAvatar;
+  }
+};
+
+export default function MyDocument() {
+  const avatar = getAvatar();
 
   return (
     <Html lang="en">
@@ -17,10 +28,12 @@ export default function MyDocument({ profile }: MyDocumentProps) {
         <meta name="theme-color" content='#00FF00' />
         <meta name="description" content={metaConfig.description} />
 
+        <meta property="og:locale" content="en_US" />
         <meta property="og:title" content={metaConfig.title} />
+        <meta property="og:site_name" content={metaConfig.title} />
         <meta property="og:description" content={metaConfig.shortDescription} />
         {/*<meta property="og:image" content={metaConfig.image} />*/}
-        <meta property="og:url" content={metaConfig.url} />
+        <meta property="og:url" content='https://9ll.fun' />
         <meta property="og:type" content="website" />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -28,8 +41,9 @@ export default function MyDocument({ profile }: MyDocumentProps) {
         <meta name="twitter:description" content={metaConfig.shortDescription} />
         {/*<meta name="twitter:image" content={metaConfig.image} />*/}
 
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <link href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" rel="stylesheet" />
+        <link rel="manifest" href="/manifest.json" />
         <link rel="icon" href={avatar} type="image/x-icon" />
       </Head>
       <body>
@@ -39,17 +53,3 @@ export default function MyDocument({ profile }: MyDocumentProps) {
     </Html>
   );
 }
-
-MyDocument.getInitialProps = async (ctx: DocumentContext) => {
-  const props = await ctx.defaultGetInitialProps(ctx);
-
-  let profile: LanyardResponse | null = null;
-
-  try {
-    const res = await axios.get(`https://api.lanyard.rest/v1/users/${metaConfig.accounts.discord.id}`);
-    profile = res?.data?.data;
-  } catch (error) {
-  }
-
-  return { ...props, profile };
-};

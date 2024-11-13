@@ -173,7 +173,11 @@ const Profile = ({ profile, _profile }: ProfileProps) => {
                   <div className="order-first lg:order-last flex-shrink-0 relative w-[160px] h-[160px] rounded-full">
                     <img
                       alt="k4itrun"
-                      src={`https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}`}
+                      src={
+                        profile.discord_user.avatar 
+                          ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}`
+                          : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
+                        }
                       width="160"
                       height="160"
                       className="bg-neutral-700 w-[160px] h-[160px] rounded-full"
