@@ -5,7 +5,7 @@ interface ActivityTooltipProps {
     elapsedActivityTime: string;
 }
 
-export function ActivityTooltip({ activity, elapsedActivityTime }: ActivityTooltipProps) {
+const ActivityTooltip = ({ activity, elapsedActivityTime }: ActivityTooltipProps) => {
     return (
         <>
             <div className="p-4 w-72 text-left bg-white dark:bg-black shadow-lg rounded-md">
@@ -77,3 +77,5 @@ export function ActivityTooltip({ activity, elapsedActivityTime }: ActivityToolt
         </>
     );
 }
+
+export default ActivityTooltip;

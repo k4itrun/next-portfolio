@@ -12,7 +12,7 @@ const formatTime = (ms: number) => {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
 };
 
-export function SpotifyTooltip({ spotify, elapsedSpotifyTime, progressSpotify }: SpotifyTooltipProps) {
+const SpotifyTooltip = ({ spotify, elapsedSpotifyTime, progressSpotify }: SpotifyTooltipProps) => {
     return (
         <>
             <div className="p-4 w-72 text-left bg-white dark:bg-black shadow-lg rounded-md">
@@ -88,3 +88,5 @@ export function SpotifyTooltip({ spotify, elapsedSpotifyTime, progressSpotify }:
         </>
     );
 }
+
+export default SpotifyTooltip;

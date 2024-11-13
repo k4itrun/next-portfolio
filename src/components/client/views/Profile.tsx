@@ -2,8 +2,8 @@ import { Profile as ProfileInterface } from "@/interfaces";
 
 import { metaConfig } from '@k4itrunconfig';
 
-import { ActivityTooltip } from "@/components/client/tooltip/Activity";
-import { SpotifyTooltip } from "@/components/client/tooltip/Spotify";
+import ActivityTooltip from "@/components/client/tooltip/Activity";
+import SpotifyTooltip from "@/components/client/tooltip/Spotify";
 
 import GlowEffect from "@/components/client/GlowEffect";
 
