@@ -1,6 +1,6 @@
 export interface MetaConfig {
   version: string;
-  name: string;
+  title: string;
   description: string;
   shortDescription: string;
   email?: string;
@@ -49,6 +49,7 @@ interface Social {
 export interface HeaderConfig {
   title: string;
   description: string;
+  shortDescription: string;
   socials: Social[];
 }
 

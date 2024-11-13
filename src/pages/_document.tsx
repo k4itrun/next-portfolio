@@ -1,5 +1,5 @@
 import { MyDocumentProps, LanyardResponse } from "@/interfaces";
-import { metaConfig, headerConfig } from '@k4itrunconfig';
+import { metaConfig } from '@k4itrunconfig';
 import tailwindConfig from 'tailwind.config';
 
 import { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
@@ -14,8 +14,20 @@ export default function MyDocument({ profile }: MyDocumentProps) {
     <Html lang="en">
       <Head>
         <meta charSet="utf-8" />
-        <meta name="theme-color" content={tailwindConfig.theme.extend.colors['color-layout']} />
-        <meta name="description" content={headerConfig.description} />
+        <meta name="theme-color" content='#00FF00' />
+        <meta name="description" content={metaConfig.description} />
+
+        <meta property="og:title" content={metaConfig.title} />
+        <meta property="og:description" content={metaConfig.shortDescription} />
+        {/*<meta property="og:image" content={metaConfig.image} />*/}
+        <meta property="og:url" content={metaConfig.url} />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={metaConfig.title} />
+        <meta name="twitter:description" content={metaConfig.shortDescription} />
+        {/*<meta name="twitter:image" content={metaConfig.image} />*/}
+
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
         <link href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" rel="stylesheet" />
         <link rel="icon" href={avatar} type="image/x-icon" />

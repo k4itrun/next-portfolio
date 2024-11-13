@@ -1,6 +1,6 @@
 import { Profile as ProfileInterface } from "@/interfaces";
 
-import { metaConfig } from '@k4itrunconfig';
+import { headerConfig } from '@k4itrunconfig';
 
 import ActivityTooltip from "@/components/client/tooltip/Activity";
 import SpotifyTooltip from "@/components/client/tooltip/Spotify";
@@ -144,7 +144,7 @@ const Profile = ({ profile, _profile }: ProfileProps) => {
                         arrow={true}
                       >
                         <p className="flex items-center text-black dark:text-white text-4xl font-semibold cursor-pointer">
-                          {profile.discord_user.global_name || `${metaConfig.name}†`}
+                          {profile.discord_user.global_name || `${headerConfig.title}†`}
                         </p>
                       </Tippy>
 
@@ -166,7 +166,7 @@ const Profile = ({ profile, _profile }: ProfileProps) => {
                     </div>
 
                     <p className="text-black dark:text-white text-md mt-3 text-center lg:text-left">
-                      {metaConfig.description}
+                      {headerConfig.description}
                     </p>
                   </div>
 
@@ -195,7 +195,7 @@ const Profile = ({ profile, _profile }: ProfileProps) => {
                   style={{ zIndex: "-1" }}
                   className="text-black/10 dark:text-white/5 absolute bottom-3 left-7 text-xl sm:text-2xl md:text-4xl lg:text-3xl font-semibold"
                 >
-                  {metaConfig.shortDescription}
+                  {headerConfig.shortDescription}
                 </span>
               </div>
             ) : (

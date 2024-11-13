@@ -3,7 +3,7 @@ import { version } from "./package.json";
 
 export const metaConfig: MetaConfig = {
     version,
-    name: 'k4itrun',
+    title: 'k4itrun',
     description: "Currently working on various projects. Stay tuned for updates.",
     shortDescription: "Random developer from this planet.",
     webhook: process.env.WEBHOOK,
@@ -48,8 +48,9 @@ export const technologiesConfig: TechnologiesConfig[] = [
 
 
 export const headerConfig: HeaderConfig = {
-    title: metaConfig.name,
-    description: metaConfig.shortDescription,
+    title: metaConfig.title,
+    description: metaConfig.description,
+    shortDescription: metaConfig.shortDescription,
     socials: [
         { name: "spotify", link: metaConfig.accounts.spotify.url },
         { name: "github", link: metaConfig.accounts.github.url },
