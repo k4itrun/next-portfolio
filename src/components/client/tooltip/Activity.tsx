@@ -1,7 +1,8 @@
+import { Activity } from "@/interfaces";
 import { encodeImgBase64 } from '@/utils/toImgBase64';
 
 interface ActivityTooltipProps {
-    activity: any;
+    activity: Activity;
     elapsedActivityTime: string;
 }
 
@@ -13,12 +14,18 @@ const ActivityTooltip = ({ activity, elapsedActivityTime }: ActivityTooltipProps
                     <img
                         src={
                             encodeImgBase64(
-                                activity.assets.large_image?.startsWith("mp:external/")
-                                    ? `https://media.discordapp.net/external/${activity.assets.large_image.replace("mp:external/", "")}`
-                                    : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp`
+                                activity?.assets?.large_image
+                                    ? activity.assets.large_image.startsWith("mp:external/")
+                                        ? `https://media.discordapp.net/external/${activity.assets.large_image.replace("mp:external/", "")}`
+                                        : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp`
+                                    : 'https://lanyard-profile-readme.vercel.app/assets/unknown.png'
                             )
                         }
-                        alt={activity.assets.large_text || 'Activity'}
+                        alt={
+                            activity?.assets?.large_text
+                                ? activity.assets.large_text
+                                : 'Activity'
+                            }
                         className="w-10 h-10 rounded-md"
                     />
                     <div>
@@ -40,12 +47,10 @@ const ActivityTooltip = ({ activity, elapsedActivityTime }: ActivityTooltipProps
                 </div>
                 <p className="mt-2 text-sm">
                     {
-                        activity.details
-                            ? (
-                                activity.details?.length > 40
-                                    ? `${activity.details.substring(0, 40)}...`
-                                    : activity.details
-                            )
+                        activity?.details
+                            ? activity.details.length > 40
+                                ? `${activity.details.substring(0, 40)}...`
+                                : activity.details
                             : 'No details available'
                     }
                 </p>
@@ -53,9 +58,11 @@ const ActivityTooltip = ({ activity, elapsedActivityTime }: ActivityTooltipProps
                     <img
                         src={
                             encodeImgBase64(
-                                activity.assets.small_image?.startsWith("mp:external/")
-                                    ? `https://media.discordapp.net/external/${activity.assets.small_image.replace("mp:external/", "")}`
-                                    : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`
+                                activity?.assets?.small_image
+                                    ? activity.assets.small_image.startsWith("mp:external/")
+                                        ? `https://media.discordapp.net/external/${activity.assets.small_image.replace("mp:external/", "")}`
+                                        : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`
+                                    : 'https://lanyard-profile-readme.vercel.app/assets/unknown.png'
                             )
                         }
                         alt={activity.assets?.small_text}
@@ -63,9 +70,11 @@ const ActivityTooltip = ({ activity, elapsedActivityTime }: ActivityTooltipProps
                     />
                     <p className="text-sm text-gray-500">
                         {
-                            activity.assets.small_text?.length > 15
-                                ? `${activity.assets.small_text.substring(0, 15)}...`
-                                : activity.assets.small_text
+                            activity?.assets?.small_text
+                                ? activity.assets.small_text.length > 15
+                                    ? `${activity.assets.small_text.substring(0, 15)}...`
+                                    : activity.assets.small_text
+                                : 'No small text available'
                         }
                     </p>
                     <p className="text-sm text-green-500 ml-2 flex items-center">

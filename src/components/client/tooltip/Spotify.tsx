@@ -1,7 +1,8 @@
+import { Spotify } from "@/interfaces";
 import { encodeImgBase64 } from '@/utils/toImgBase64';
 
 interface SpotifyTooltipProps {
-    spotify: any;
+    spotify: Spotify;
     elapsedSpotifyTime: number;
     progressSpotify: number;
 }
@@ -19,7 +20,7 @@ const SpotifyTooltip = ({ spotify, elapsedSpotifyTime, progressSpotify }: Spotif
                 <div className="flex items-center space-x-3">
                     <img
                         src={
-                            encodeImgBase64(spotify?.album_art_url)
+                            encodeImgBase64(spotify.album_art_url)
                         }
                         alt="Spotify Album Art"
                         className="w-10 h-10 rounded-md"
@@ -56,7 +57,7 @@ const SpotifyTooltip = ({ spotify, elapsedSpotifyTime, progressSpotify }: Spotif
                 <div className="flex items-center space-x-2 mt-3">
                     <img
                         src={
-                            encodeImgBase64(spotify?.album_art_url)
+                            encodeImgBase64(spotify.album_art_url)
                         }
                         alt="Spotify Album Art Small"
                         className="w-5 h-5 rounded-md"
@@ -79,7 +80,7 @@ const SpotifyTooltip = ({ spotify, elapsedSpotifyTime, progressSpotify }: Spotif
                             style={{ transform: 'translateX(-5px)' }}
                         >
                             {
-                                formatTime(spotify?.timestamps?.end - spotify?.timestamps?.start)
+                                formatTime(spotify.timestamps.end - spotify.timestamps.start)
                             }
                         </div>
                     </div>
