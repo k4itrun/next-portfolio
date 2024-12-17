@@ -57,62 +57,6 @@ body {
   background: radial-gradient(at 0% 120%, var(--color-layout) 0, transparent 50%);
 }
 
-::-webkit-scrollbar {
-  width: 14px;
-  height: 18px;
-  background: var(--scrollbar-background-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-scrollbar-thumb-light);
-  border-color: transparent;
-  border-style: solid;
-  border-width: 2px;
-  background-clip: padding-box;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-scrollbar-thumb-hover-light);
-}
-
-::-webkit-scrollbar-thumb:active {
-  background-color: var(--color-scrollbar-thumb-active-light);
-}
-
-.overflow-small::-webkit-scrollbar {
-  width: 8px;
-  height: 18px;
-  background: var(--scrollbar-background-light);
-}
-
-.dark ::-webkit-scrollbar {
-  width: 14px;
-  height: 18px;
-  background: var(--scrollbar-background-dark);
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background-color: var(--color-scrollbar-thumb-dark);
-  border-color: transparent;
-  border-style: solid;
-  border-width: 2px;
-  background-clip: padding-box;
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-scrollbar-thumb-hover-dark);
-}
-
-.dark ::-webkit-scrollbar-thumb:active {
-  background-color: var(--color-scrollbar-thumb-active-dark);
-}
-
-.dark .overflow-small::-webkit-scrollbar {
-  width: 8px;
-  height: 18px;
-  background: var(--scrollbar-background-dark);
-}
-
 /* AVATAR */
 .pulse-avatar-dnd {
   background-color: var(--color-avatar-dnd);
