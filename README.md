@@ -28,8 +28,8 @@ Make sure to update the pre-configured values in the [k4itrun.config.ts](https:/
 2. Install dependencies: `npm i`
 3. Copy `.env.example` and rename it to `.env`.
 4. Set these values in `.env`:
-   - `DISCORD_ID`: for public account info.
-   - `WEBHOOK`: for the contact form (coming soon).
+   - `DISCORD_USER_ID`: for public account info.
+   - `DISCORD_WEBHOOK_URL`: for the contact form (coming soon).
 5. Edit [k4itrun.config.ts](https://github.com/k4itrun/next-portfolio/blob/main/k4itrun.config.ts#L4) (e.g., `name`, `description`, `socials`).
 6. Build the project: `npm run build`
 7. For development, run: `npm run dev`
@@ -37,11 +37,11 @@ Make sure to update the pre-configured values in the [k4itrun.config.ts](https:/
 
 ### ▲ Vercel (recommended for Next.js)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio&env=DISCORD_ID,WEBHOOK&envDescription=Environment%20Variables%20Docs&envLink=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio%23deployment&project-name=portfolio&repo-name=k4itrun-portfolio&demo-title=Example%20deploy&demo-description=Example%20production%20deploy%20from%20Github%20Repository&demo-url=https%3A%2F%2F9ll.fun&demo-image=https%3A%2F%2Fi.imgur.com%2FT4VsRuy.png)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio&env=DISCORD_USER_ID,DISCORD_WEBHOOK_URL&envDescription=Environment%20Variables%20Docs&envLink=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio%23deployment&project-name=portfolio&repo-name=k4itrun-portfolio&demo-title=Example%20deploy&demo-description=Example%20production%20deploy%20from%20Github%20Repository&demo-url=https%3A%2F%2F9ll.fun&demo-image=https%3A%2F%2Fi.imgur.com%2FT4VsRuy.png)
 
-1. Click the button above or go to: [Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio&env=DISCORD_ID,WEBHOOK&envDescription=Environment%20Variables%20Docs&envLink=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio%23deployment&project-name=portfolio&repo-name=k4itrun-portfolio&demo-title=Example%20deploy&demo-description=Example%20production%20deploy%20from%20Github%20Repository&demo-url=https%3A%2F%2F9ll.fun&demo-image=https%3A%2F%2Fi.imgur.com%2FT4VsRuy.png)
-1. Add your `DISCORD_ID` for account info.
-2. Add the `WEBHOOK` for the contact form (coming soon).
+1. Click the button above or go to: [Vercel](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio&env=DISCORD_USER_ID,DISCORD_WEBHOOK_URL&envDescription=Environment%20Variables%20Docs&envLink=https%3A%2F%2Fgithub.com%2Fk4itrun%2Fnext-portfolio%23deployment&project-name=portfolio&repo-name=k4itrun-portfolio&demo-title=Example%20deploy&demo-description=Example%20production%20deploy%20from%20Github%20Repository&demo-url=https%3A%2F%2F9ll.fun&demo-image=https%3A%2F%2Fi.imgur.com%2FT4VsRuy.png)
+1. Add your `DISCORD_USER_ID` for account info.
+2. Add the `DISCORD_WEBHOOK_URL` for the contact form (coming soon).
 3. Click the `Deploy` button and wait.
 4. In your forked repo, update the values in the [k4itrun.config.ts](https://github.com/k4itrun/next-portfolio/blob/main/k4itrun.config.ts#L4) file (e.g., `name`, `description`, `socials`, etc.).
 
@@ -61,8 +61,8 @@ You can configure environment variables in the `.env` file. Example:
 
 | Variable              | Description                                                      | Required |
 | --------------------- | ---------------------------------------------------------------- | -------- |
-| `WEBHOOK` | For the contact form (coming soon).                             | `No` |
-| `DISCORD_ID` | For account info (public).                             | `Yes` |
+| `DISCORD_WEBHOOK_URL` | For the contact form (coming soon).                             | `No` |
+| `DISCORD_USER_ID` | For account info (public).                             | `Yes` |
 
 ## Contributing
 Support this project by [Donating](https://ko-fi.com/A0A11481X5) to help fund new improvements, or simply add a ⭐ star to this repository.

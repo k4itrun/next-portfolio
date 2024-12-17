@@ -1,19 +1,19 @@
 "use client";
 
-import { GlowEffectProps } from "@/interfaces";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 import Tilt from "react-parallax-tilt";
 
-const GlowEffect = ({ children, className }: GlowEffectProps) => {
+export const GlowEffect = ({ children, className }: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     setIsDarkMode(mediaQuery.matches);
 
-    const handleMediaQueryChange = (e: MediaQueryListEvent) => {
-      setIsDarkMode(e.matches);
-    };
+    const handleMediaQueryChange = (e: MediaQueryListEvent) => setIsDarkMode(e.matches);
 
     mediaQuery.addEventListener("change", handleMediaQueryChange);
 
@@ -39,5 +39,3 @@ const GlowEffect = ({ children, className }: GlowEffectProps) => {
     </>
   );
 }
-
-export default GlowEffect;

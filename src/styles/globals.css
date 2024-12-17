@@ -2,23 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-
 * {
+  scrollbar-color: #111111 transparent;
+  scrollbar-width: thin;
   cursor: none !important;
 }
 
 :root {
-  --color-layout: #ff3300;
-
-  --scrollbar-background-light: #a1a1a1;
-  --color-scrollbar-thumb-light: #7b7a7a;
-  --color-scrollbar-thumb-hover-light: #696869;
-  --color-scrollbar-thumb-active-light: #434243;
-
-  --scrollbar-background-dark: #434243;
-  --color-scrollbar-thumb-dark: #696869;
-  --color-scrollbar-thumb-hover-dark: #7b7a7a;
-  --color-scrollbar-thumb-active-dark: #a1a1a1;
+  --color-layout: #FF00FF;
 
   --color-bg-light: #fff;
   --color-text-light: #000;
@@ -41,8 +32,6 @@
   --color-text-dnd: #f14668;
   --color-text-idle: rgb(255, 187, 0);
   --color-text-offline: #727272;
-
-  
 }
 
 body {

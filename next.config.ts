@@ -1,6 +1,8 @@
-import { redirectsConfig, metaConfig } from './k4itrun.config';
-
+import { redirects, meta } from '@k4itrun/config';
 import type { NextConfig } from "next";
+import createMdx from "@next/mdx";
+
+const withMDX = createMdx();
 
 const commonHeaders = [
     { key: "Access-Control-Allow-Origin", value: "*" },
@@ -18,7 +20,7 @@ const contentHeaders = (contentType: string) => [
     { key: "Content-Type", value: contentType },
 ];
 
-const nextConfg: NextConfig = {
+const nextConfig = {
     reactStrictMode: true,
     experimental: {
         turbo: {
@@ -27,10 +29,29 @@ const nextConfg: NextConfig = {
     },
     pageExtensions: ["jsx", "js", "ts", "tsx"],
     env: {
-        VERSION: metaConfig.version,
+        VERSION: meta.version,
     },
     eslint: {
         ignoreDuringBuilds: true,
+    },
+    typescript: {
+        ignoreBuildErrors: true,
+    },
+    images: {
+        unoptimized: true,
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "cdn.discordapp.com",
+                pathname: "**",
+            },
+            {
+                protocol: "https",
+                port: "",
+                hostname: "media.discordapp.net",
+                pathname: "**",
+            },
+        ],
     },
     async headers() {
         return [
@@ -49,12 +70,12 @@ const nextConfg: NextConfig = {
         ];
     },
     async redirects() {
-        return redirectsConfig.map((redirect) => ({
+        return redirects.map((redirect) => ({
             source: redirect.source,
-            destination: redirect.destination || "/fallback",
+            destination: redirect.destination || "/",
             permanent: redirect.permanent,
         }));
     },
-};
+} satisfies NextConfig;
 
-export default nextConfg;
+export default withMDX(nextConfig);

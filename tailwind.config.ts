@@ -1,23 +1,32 @@
 import tailwindTypography from "@tailwindcss/typography";
-/** @type {import('tailwindcss').Config} */
+import type { Config } from "tailwindcss";
+
 export default {
   darkMode: 'class',
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./k4itrun.config.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+    "./config/config/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
-      colors: {
-        'color-layout': 'var(--color-layout)',
-        white: '#ffffff',
-        black: '#000000',
-      },
       fontFamily: {
         sans: ['Lexend Deca', 'sans-serif'],
         serif: ['Merriweather', 'serif'],
       },
+      colors: {
+        color: {
+          DEFAULT: 'var(--color-layout)',
+          layout: 'var(--color-layout)',
+        },
+        white: {
+          DEFAULT: '#ffffff',
+        },
+        black: {
+          DEFAULT: '#000000',
+        }
+      },
     },
   },
   plugins: [tailwindTypography]
-}
+} satisfies Config;
