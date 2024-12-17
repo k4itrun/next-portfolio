@@ -12,7 +12,7 @@ export default function Error({ error }: { error: Error & { digest?: string } })
         {error.message.toString() || "An unexpected error occurred."}
       </p>
       <Button variant="secondary" href="/">
-        Go home
+        Back to top
       </Button>
     </div>
   );

@@ -10,7 +10,7 @@ export default function NotFound() {
         Page not found.
       </p>
       <Button variant="secondary" href="/">
-        Go home
+        Back to top
       </Button>
     </div>
   );
