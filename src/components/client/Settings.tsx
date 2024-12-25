@@ -4,7 +4,7 @@ import { header, meta, globalConfig } from '@k4itrun/config';
 import { useTheme } from "@/components/client/context/ThemeProvider";
 import { Button } from "@/components/Button";
 import { useState } from "react";
-import { Icons } from "../Icons";
+import { Icons } from "@/components/Icons";
 import { Dialog, DialogBackdrop } from "@headlessui/react";
 import { cn } from "@/lib/utils/cn";
 import Link from "next/link";
@@ -45,7 +45,7 @@ export const Settings = () => {
             <Dialog transition as="div" className="fixed inset-0 z-50 ease-out focus:outline-none" open={isSettingsOpen} onClose={() => setSettingsState(false)}>
                 <DialogBackdrop transition className="fixed inset-0 bg-black/50 duration-200 data-[closed]:opacity-0 motion-reduce:transition-none backdrop-blur-sm" />
                 <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
-                    <div className="bg-white dark:bg-black p-6 rounded-lg max-w-md w-full shadow-lg">
+                    <div className="border dark:border-neutral-800/35 bg-white dark:bg-black p-6 rounded-lg max-w-md w-full shadow-lg">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-xl font-semibold text-black dark:text-white">Settings</h2>
                             <Button

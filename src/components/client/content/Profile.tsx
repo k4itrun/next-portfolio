@@ -1,8 +1,8 @@
 "use client"
 
 import { header } from '@k4itrun/config';
-import { ActivityTooltip } from "@/components/client/content/ActivityTooltip";
-import { SpotifyTooltip } from "@/components/client/content/SpotifyTooltip";
+import { ActivityTooltip } from "@/components/client/content/utils/ActivityTooltip";
+import { SpotifyTooltip } from "@/components/client/content/utils/SpotifyTooltip";
 import { GlowEffect } from "@/components/client/GlowEffect";
 import { useEffect, useState } from 'react';
 import Tippy from "@tippyjs/react";

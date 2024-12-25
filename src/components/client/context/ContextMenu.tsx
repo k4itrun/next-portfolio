@@ -2,6 +2,7 @@
 
 import { KeyShortcut } from "@/components/client/KeyShortcut";
 import { useEffect, useState, ReactNode } from "react";
+import { Icons } from "@/components/Icons";
 
 interface EventActions {
     hasForward: boolean;
@@ -112,43 +113,41 @@ const renderContextMenu = ({
     viewYoutube
 }: EventActions) => {
 
-    const renderMenuItem = (icon: JSX.Element, text: string, kbd: string[] = [], onClick: () => void) => (
-        <><MenuItem icon={icon} text={text} kbd={kbd} onClick={onClick} /></>
+    const renderMenuItem = (icon: JSX.Element, text: string, onClick: () => void, kbd: string[] = []) => (
+        <><MenuItem icon={icon} text={text} onClick={onClick} {...(kbd.length > 0 ? { kbd } : {})} /></>
     );
 
     return (
         <>
             <div>
                 {hasBack && renderMenuItem(
-                    <i className="fa fa-arrow-left" />,
+                    <Icons.ArrowLeft className="w-5 h-5 fill-neutral-700/50 hover:fill-neutral-700 dark:fill-white/50 dark:hover:fill-white transition-all duration-200" />,
                     "Back",
-                    ["Alt", "◀"],
                     goBack,
+                    ["Alt", "◀"],
                 )}
                 {hasForward && renderMenuItem(
-                    <i className="fa fa-arrow-right" />,
+                    <Icons.ArrowRight className="w-5 h-5 fill-neutral-700/50 hover:fill-neutral-700 dark:fill-white/50 dark:hover:fill-white transition-all duration-200" />,
                     "Forward",
-                    ["Alt", "▶"],
                     goForward,
+                    ["Alt", "▶"],
                 )}
                 {renderMenuItem(
-                    <i className="fa fa-redo" />,
+                    <Icons.Redo className="w-5 h-5 fill-neutral-700/50 hover:fill-neutral-700 dark:fill-white/50 dark:hover:fill-white transition-all duration-200" />,
                     "Refresh",
-                    ["Ctrl", "R"],
                     refreshPage,
+                    ["Ctrl", "R"],
                 )}
             </div>
             <div className="pt-3">
                 {renderMenuItem(
-                    <i className="fab fa-github" />,
+                    <Icons.Github className="w-4 h-4 fill-neutral-700/50 hover:fill-neutral-700 dark:fill-white/50 dark:hover:fill-white transition-all duration-200" />,
                     "Github",
-                    [],
                     viewGithub
                 )}
                 {renderMenuItem(
-                    <i className="fab fa-youtube" />,
+                    <Icons.Youtube className="w-4 h-4 fill-neutral-700/50 hover:fill-neutral-700 dark:fill-white/50 dark:hover:fill-white transition-all duration-200" />,
                     "YouTube",
-                    [],
                     viewYoutube
                 )}
             </div>

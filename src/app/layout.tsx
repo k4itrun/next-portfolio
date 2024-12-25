@@ -38,20 +38,32 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport = {
+export const viewport: Metadata = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
     { media: "(prefers-color-scheme: dark)", color: "black" },
   ],
 };
 
+const links = [
+  {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap',
+  },
+  {
+    rel: 'stylesheet',
+    href: 'https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css',
+  },
+];
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-          <link href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" rel="stylesheet" />
+          {links.map((link, index) => (
+            <link key={index} rel={link.rel} href={link.href} />
+          ))}
         </head>
         <body>
           <ThemeProvider>

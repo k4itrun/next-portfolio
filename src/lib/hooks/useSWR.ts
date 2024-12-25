@@ -2,11 +2,9 @@ import { default as SWR, SWRResponse } from 'swr';
 
 interface SWRData {
     [key: string]: any;
-}
-
-const _ = {
-    interval: 3 * 1000,
 };
+
+const refreshInterval = 3 * 1000;
 
 const fetcher = async (href: string): Promise<any | null> => {
     try {
@@ -20,7 +18,5 @@ const fetcher = async (href: string): Promise<any | null> => {
 };
 
 export const useSWR = <T = SWRData>(url: string): SWRResponse<T | null, any> => {
-    return SWR<T | null>(url, fetcher, {
-        refreshInterval: _.interval,
-    });
+    return SWR<T | null>(url, fetcher, {refreshInterval});
 }

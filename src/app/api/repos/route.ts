@@ -15,7 +15,7 @@ interface Repository {
 }
 
 export async function GET(request: NextRequest) {
-  let repos: Repository[] | null = null;
+  let repos: Repository[] | [] = [];
   try {
     const res = await axios.get(`https://api.github.com/users/${meta.accounts.github.username}/repos`);
     repos = res?.data;
