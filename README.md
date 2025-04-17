@@ -85,4 +85,4 @@ This project uses the MIT license. You can find the full license details in the 
 
 ## Contact
 
-For any inquiries or support, you can reach out via [contact@w1sh.xyz](mailto:contact@w1sh.xyz).
+For any inquiries or support, you can reach out via [billoneta@proto.me](mailto:billoneta@proto.me).
