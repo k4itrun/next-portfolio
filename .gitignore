@@ -1,32 +1,79 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Node.js
+node_modules/
+package-lock.json
+!pnpm-lock.yaml
+yarn.lock
 
-# debug
+# Build output
+dist/
+build/
+.out/
+.npm/
+**/storage/*.json
+**/db/*.json
+*.tgz
+
+# TypeScript
+.cache/
+*.tsbuildinfo
+*.d.ts
+tsconfig.tsbuildinfo
+
+# Logs
+logs/
+*.log
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
-next-env.d.ts
-package-lock.json
-
-# Backup files
-*.bak
-template.tsx
+CHANGELOG.md
 
 # Environment variables
-.env*.local
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Cache
-.cache/
-.next/
-
-# Local configuration files (e.g., for IDE)
+# Editor/IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*.bak
+*.tmp
 
-# Folder for temporary files (e.g., file uploads)
-tmp/
-src/app/api/*[id]*/
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Generated files and directories
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.tar.xz
+*.rar
+
+# Package build files
+*.tgz
+*.tar.gz
+*.tar.xz
+
+# Test output
+coverage/
+
+# Miscellaneous
+*.sql
+*.sqlite
+
+# Next.js / React
+.next/
+.next/cache/
+out/
+*.local
+*.vercel
+
+# Others
+.github/commitlint.md
+**/\[id\]/

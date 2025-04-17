@@ -1,8 +1,8 @@
-import { meta } from '@k4itrun/config';
+import { meta } from '@9ll-fun/config';
 import axios from 'axios';
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
-interface LanyardUser {
+interface ILanyardUser {
   data: {
     activities: {
       id: string;
@@ -32,7 +32,7 @@ interface LanyardUser {
       username: string;
       avatar: string;
     };
-    discord_status: "dnd" | "idle" | "online" | "offline";
+    discord_status: 'dnd' | 'idle' | 'online' | 'offline';
     active_on_discord_web: boolean;
     active_on_discord_desktop: boolean;
     active_on_discord_mobile: boolean;
@@ -48,13 +48,13 @@ interface LanyardUser {
   };
 }
 
-export async function GET(request: NextRequest) {
-  let lanyard: LanyardUser | null = null;
+export async function GET(_request: NextRequest) {
+  let lanyard: ILanyardUser | null = null;
   try {
     const res = await axios.get(`https://api.lanyard.rest/v1/users/${meta.accounts.discord.id}`);
     lanyard = res?.data?.data;
     return NextResponse.json(lanyard);
-  } catch (error) {
-    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }

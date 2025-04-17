@@ -1,4 +1,4 @@
-import { redirects, meta } from '@k4itrun/config';
+import { redirects, meta } from './config/config';
 import type { NextConfig } from "next";
 import createMdx from "@next/mdx";
 
@@ -20,7 +20,7 @@ const contentHeaders = (contentType: string) => [
     { key: "Content-Type", value: contentType },
 ];
 
-const nextConfig = {
+const nextConfig: NextConfig = {
     reactStrictMode: true,
     experimental: {
         turbo: {
@@ -78,4 +78,5 @@ const nextConfig = {
     },
 } satisfies NextConfig;
 
+// For a future add post
 export default withMDX(nextConfig);

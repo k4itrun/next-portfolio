@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { globalConfig } from '@k4itrun/config';
-import { AppProgressBar as ProgressBarNext } from "next-nprogress-bar";
-import React, { Suspense } from "react";
+import { globalConfig } from '@9ll-fun/config';
+import { AppProgressBar as ProgressBarNext } from 'next-nprogress-bar';
+import React, { Suspense } from 'react';
 
 export const ProgressBar = (props: React.ComponentProps<typeof ProgressBarNext>) => {
-    return (
-        <Suspense fallback={null}>
-            <ProgressBarNext color={globalConfig.defaultColor} options={{ showSpinner: false }} shallowRouting height="2px" {...props} />
-        </Suspense>
-    );
+  return (
+    <Suspense fallback={null}>
+      <ProgressBarNext color={globalConfig.defaultColor} options={{ showSpinner: false }} shallowRouting height="2px" {...props} />
+    </Suspense>
+  );
 };

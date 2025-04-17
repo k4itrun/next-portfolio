@@ -1,0 +1,30 @@
+# Dependency directories
+node_modules/
+dist/
+build/
+out/
+coverage/
+
+# Configuration and environment files
+.env
+.env.*  
+*.config.js
+*.config.ts
+vite.config.*
+webpack.config.*
+jest.config.*
+tailwind.config.*
+postcss.config.*
+
+# Generated or compiled files
+*.min.js
+*.bundle.js
+*.d.ts
+
+# System/IDE files
+.DS_Store
+*.log
+*.tgz
+.idea/
+.vscode/
+*.swp

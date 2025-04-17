@@ -2,55 +2,78 @@
   "name": "portfolio",
   "description": "Portfolio built on Next.js",
   "version": "1.0.0",
-  "author": "k4itrun",
-  "license": "MIT",
+  "exports": null,
   "type": "module",
-  "private": true,
   "scripts": {
     "dev": "next dev --turbo --port 4000",
-    "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "build": "next build",
+    "hooks:init": "husky",
+    "hooks:lint": "lint-staged",
+    "ci:release": "semantic-release",
+    "format": "prettier . --write --cache --ignore-unknown",
+    "format:check": "prettier . --check --ignore-unknown",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:next": "next lint . --fix"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k4itrun/next-portfolio.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "k4itrun",
+    "email": "contact@w1sh.xyz"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k4itrun/next-portfolio/issues"
+  },
+  "homepage": "https://github.com/k4itrun/next-portfolio#readme",
   "dependencies": {
     "@headlessui/react": "^2.2.0",
-    "@next/mdx": "^15.1.1",
     "@tippyjs/react": "^4.2.6",
-    "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "next": "15.0.3",
     "next-nprogress-bar": "^2.4.2",
-    "nprogress": "^0.2.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-tailwindcss": "^0.6.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-parallax-tilt": "^1.7.253",
     "swr": "^2.2.5",
     "sync-fetch": "^0.5.2",
     "tailwind-merge": "^2.5.5",
-    "tinycolor2": "^1.6.0",
-    "typescript-eslint": "^8.18.1"
+    "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "@commitlint/types": "^19.8.0",
+    "@k4i/eslint-config": "^2.0.0",
+    "@k4i/prettier-config": "^2.0.0",
+    "@next/mdx": "^15.3.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^22.9.0",
-    "@types/nprogress": "^0.2.3",
+    "@types/node": "^22.14.1",
     "@types/react": "^18.3.12",
     "@types/sync-fetch": "^0.4.3",
     "@types/tinycolor2": "^1.4.6",
-    "@typescript-eslint/eslint-plugin": "^8.18.0",
-    "@typescript-eslint/parser": "^8.18.0",
-    "depcheck": "^1.4.7",
+    "autoprefixer": "^10.4.21",
     "eslint": "9.14.0",
-    "eslint-config-next": "15.0.3",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.1",
     "postcss": "^8.4.47",
+    "prettier": "^3.5.3",
+    "semantic-release": "^24.2.3",
     "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3",
-    "webpack": "^5.96.1"
+    "typescript": "^5.6.3"
   },
   "browserslist": [
     ">0.3%",
@@ -58,11 +81,31 @@
     "not dead",
     "not op_mini all"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/k4itrun/next-portfolio.git"
+  "lint-staged": {
+    "*.{ts,tsx,js,json,md}": [
+      "prettier . --write --cache --ignore-unknown"
+    ],
+    "*.{ts,tsx,js}": [
+      "git add -A",
+      "eslint . --fix"
+    ]
   },
-  "bugs": {
-    "url": "https://github.com/k4itrun/next-portfolio/issues"
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ]
+  },
+  "packageManager": "pnpm@10.8.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

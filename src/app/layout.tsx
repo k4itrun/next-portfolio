@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import { meta } from '@k4itrun/config';
+import { meta } from '@9ll-fun/config';
 import { ContextMenu } from '@/components/client/context/ContextMenu';
 import { Cursor } from '@/components/client/context/Cursor';
 import { Footer } from '@/components/client/Footer';
@@ -7,7 +7,7 @@ import { Nav } from '@/components/client/Nav';
 import { PageProvider } from '@/components/client/context/PageProvider';
 import { ThemeProvider } from '@/components/client/context/ThemeProvider';
 import { ProgressBar } from '@/components/client/Progress';
-import { type Metadata } from "next";
+import { type Metadata } from 'next';
 
 export const metadata: Metadata = {
   metadataBase: new URL(meta.url),
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
   twitter: {
     title: meta.title,
     description: meta.shortDescription,
-    creator: "@k4itrunnofound",
-    card: "summary_large_image",
+    creator: '@billoneta_',
+    card: 'summary_large_image',
   },
   robots: {
     index: true,
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
   icons: {
-    shortcut: "/favicon.ico",
+    shortcut: '/favicon.ico',
   },
 };
 
 export const viewport: Metadata = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
   ],
 };
 
@@ -70,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <PageProvider>
               <ProgressBar />
               <Cursor />
-              <ContextMenu >
+              <ContextMenu>
                 <main className="border-black/10 dark:border-black border-b-[8px] border-t-[0px] h-full w-full">
                   <div className="min-h-screen max-w-screen-lg p-5 w-full md:w-10/12 lg:w-8/12 mx-auto transition-all duration-300">
                     <Nav />
@@ -87,4 +87,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </html>
     </>
   );
-};
+}

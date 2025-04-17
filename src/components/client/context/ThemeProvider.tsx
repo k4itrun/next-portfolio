@@ -1,101 +1,125 @@
-"use client";
+'use client';
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { globalConfig, ColorOption } from '@k4itrun/config';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { globalConfig, IColorOption } from '@9ll-fun/config';
 
 type Theme = 'dark' | 'light' | 'system';
 
-interface Color {
-  name: string;
-  hex: string;
-}
+type IColor = Omit<IColorOption, 'default'>;
 
-interface ThemeContext {
+interface IThemeContext {
   selectedTheme: Theme;
   toggleTheme: () => void;
-  setTheme: (theme: Theme | any) => void;
-  selectedColor: Color;
-  setColor: (color: Color | any) => void;
+  setTheme: (theme: Theme) => void;
+  selectedColor: IColor;
+  setColor: (color: IColor) => void;
 }
 
-const ThemeContext = createContext<ThemeContext | undefined>(undefined);
+const LOCAL_STORAGE_KEYS = {
+  THEME: 'selectedTheme',
+  COLOR: 'selectedColor',
+} as const;
 
-export const useTheme = (): ThemeContext => {
+const ThemeContext = createContext<IThemeContext | undefined>(undefined);
+
+export const useTheme = (): IThemeContext => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
-}
+};
 
-function getDefaultColor(colorOptions: ColorOption[]): ColorOption | any {
-  return colorOptions.find(option => option.default) || colorOptions[0];
-}
+const getDefaultColor = (colorOptions: IColorOption[]): IColor => {
+  const defaultColor = colorOptions.find((option) => option.default);
+  return (defaultColor || colorOptions[0]) as IColor;
+};
+
+const getSystemTheme = (): Theme => {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
+
+const applyTheme = (theme: Theme): void => {
+  const hoursDay = new Date().getHours() >= 6 && new Date().getHours() < 18;
+  const themeToApply = theme === 'system' ? (hoursDay ? 'light' : 'dark') : theme;
+
+  document.documentElement.classList.toggle('dark', themeToApply === 'dark');
+};
+
+const applyColor = (color: IColor): void => {
+  document.documentElement.style.setProperty('--color-layout', color.hex);
+};
+
+const getNextTheme = (currentTheme: Theme): Theme => {
+  const themeSequence: Theme[] = ['light', 'dark', 'system'];
+  const currentIndex = themeSequence.indexOf(currentTheme);
+  return themeSequence[(currentIndex + 1) % themeSequence.length] as Theme;
+};
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [selectedTheme, setSelectedTheme] = useState<Theme>('dark');
-  const [selectedColor, setSelectedColor] = useState<Color | null>(null);
+  const [selectedColor, setSelectedColor] = useState<IColor | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   useEffect(() => {
-    const storedColor = localStorage.getItem("selectedColor");
-    if (storedColor) {
-      setSelectedColor(JSON.parse(storedColor));
-    } else {
-      setSelectedColor(getDefaultColor(globalConfig.colorOptions));
-    }
+    const systemTheme = getSystemTheme();
+    const defaultColor = getDefaultColor(globalConfig.colorOptions);
+    try {
+      const storedColor = localStorage.getItem(LOCAL_STORAGE_KEYS.COLOR);
+      const storedColorParsed = JSON.parse(`${storedColor}`) as IColor;
+      setSelectedColor(storedColor ? storedColorParsed : defaultColor);
 
-    const storedTheme = localStorage.getItem("selectedTheme") as Theme | null;
-    if (storedTheme) {
-      setSelectedTheme(storedTheme);
-    } else {
-      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      const storedTheme = localStorage.getItem(LOCAL_STORAGE_KEYS.THEME) as Theme | null;
+      setSelectedTheme(storedTheme || systemTheme);
+
+      setIsInitialized(true);
+    } catch (_error) {
+      setSelectedColor(defaultColor);
       setSelectedTheme(systemTheme);
+      setIsInitialized(true);
     }
-
-    setIsInitialized(true);
   }, []);
 
   useEffect(() => {
     if (selectedColor) {
-      document.documentElement.style.setProperty('--color-layout', selectedColor.hex);
-      localStorage.setItem("selectedColor", JSON.stringify(selectedColor));
+      applyColor(selectedColor);
+      localStorage.setItem(LOCAL_STORAGE_KEYS.COLOR, JSON.stringify(selectedColor));
     }
   }, [selectedColor]);
 
   useEffect(() => {
     if (isInitialized) {
-      const themeToApply = selectedTheme === 'system'
-        ? (new Date().getHours() >= 6 && new Date().getHours() < 18 ? 'light' : 'dark')
-        : selectedTheme;
-
-      document.documentElement.classList.toggle("dark", themeToApply === 'dark');
+      applyTheme(selectedTheme);
     }
   }, [selectedTheme, isInitialized]);
 
   const toggleTheme = () => {
-    const nextTheme: Theme = selectedTheme === "light" ? "dark" : selectedTheme === "dark" ? "system" : "light";
-    setSelectedTheme(nextTheme);
-    localStorage.setItem("selectedTheme", nextTheme);
+    const theme = getNextTheme(selectedTheme);
+    setSelectedTheme(theme);
+    localStorage.setItem(LOCAL_STORAGE_KEYS.THEME, theme);
   };
 
   const setTheme = (theme: Theme) => {
     setSelectedTheme(theme);
-    localStorage.setItem("selectedTheme", theme);
+    localStorage.setItem(LOCAL_STORAGE_KEYS.THEME, theme);
   };
 
-  const setColor = (color: Color) => {
+  const setColor = (color: IColor) => {
     setSelectedColor(color);
   };
 
+  const currentColor = selectedColor || getDefaultColor(globalConfig.colorOptions);
+
   return (
-    <ThemeContext.Provider value={{
-      selectedTheme,
-      toggleTheme,
-      setTheme,
-      selectedColor: selectedColor || getDefaultColor(globalConfig.colorOptions),
-      setColor,
-    }}>
+    <ThemeContext.Provider
+      value={{
+        selectedTheme,
+        toggleTheme,
+        setTheme,
+        selectedColor: currentColor,
+        setColor,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );

@@ -1,14 +1,14 @@
-"use client"
+'use client';
 
-import { header } from '@k4itrun/config';
-import { ActivityTooltip } from "@/components/client/content/utils/ActivityTooltip";
-import { SpotifyTooltip } from "@/components/client/content/utils/SpotifyTooltip";
-import { GlowEffect } from "@/components/client/GlowEffect";
+import { header } from '@9ll-fun/config';
+import { ActivityTooltip } from '@/components/client/content/utils/ActivityTooltip';
+import { SpotifyTooltip } from '@/components/client/content/utils/SpotifyTooltip';
+import { GlowEffect } from '@/components/client/GlowEffect';
 import { useEffect, useState } from 'react';
-import Tippy from "@tippyjs/react";
+import Tippy from '@tippyjs/react';
 import { useSWR } from '@/lib/hooks/useSWR';
 
-interface ProfileUser {
+interface IProfileUser {
   activities: {
     id: string;
     name: string;
@@ -46,7 +46,7 @@ interface ProfileUser {
     username: string;
     avatar: string;
   };
-  discord_status: "dnd" | "idle" | "online" | "offline";
+  discord_status: 'dnd' | 'idle' | 'online' | 'offline';
   active_on_discord_web: boolean;
   active_on_discord_desktop: boolean;
   active_on_discord_mobile: boolean;
@@ -61,27 +61,26 @@ interface ProfileUser {
     artist: string;
     song: string;
     track_id: string;
-  }
-  | null;
+  } | null;
 }
 
 const statuses = {
-  dnd: { label: "Do not Disturb" },
-  idle: { label: "Idle" },
-  online: { label: "Online" },
-  offline: { label: "Offline" },
+  dnd: { label: 'Do not Disturb' },
+  idle: { label: 'Idle' },
+  online: { label: 'Online' },
+  offline: { label: 'Offline' },
 };
 
 // ILL FINISH IT LATER !!
 
 export const Profile = () => {
-  const { data: _profile } = useSWR<ProfileUser>("/api/lanyard");
+  const { data: _profile } = useSWR<IProfileUser>('/api/lanyard');
   const profile = _profile;
 
-  const [elapsedActivityTime, setElapsedActivityTime] = useState<string>("");
+  const [elapsedActivityTime, setElapsedActivityTime] = useState<string>('');
   const [elapsedSpotifyTime, setElapsedSpotifyTime] = useState<number>(0);
 
-  const activities = profile?.activities.filter(activity => activity.type !== 2 && activity.type !== 4) || [];
+  const activities = profile?.activities.filter((activity) => activity.type !== 2 && activity.type !== 4) || [];
 
   const activity = activities?.[0];
   const spotify = profile?.spotify;
@@ -164,9 +163,7 @@ export const Profile = () => {
     }
   }, [spotify]);
 
-  const progressSpotify = spotify?.timestamps?.start && spotify?.timestamps?.end
-    ? (elapsedSpotifyTime / (spotify.timestamps.end - spotify.timestamps.start)) * 100
-    : 0;
+  const progressSpotify = spotify?.timestamps?.start && spotify?.timestamps?.end ? (elapsedSpotifyTime / (spotify.timestamps.end - spotify.timestamps.start)) * 100 : 0;
 
   return (
     <>
@@ -180,37 +177,17 @@ export const Profile = () => {
                     <div className="flex flex-col lg:flex-row items-center lg:items-start">
                       <Tippy
                         content={
-                          activity && activity.name ? (
-                            <ActivityTooltip
-                              activity={activity}
-                              elapsedActivityTime={elapsedActivityTime}
-                            />
-                          ) : profile.listening_to_spotify && spotify ? (
-                            <SpotifyTooltip
-                              spotify={spotify}
-                              elapsedSpotifyTime={elapsedSpotifyTime}
-                              progressSpotify={progressSpotify}
-                            />
-                          ) : null
+                          activity && activity.name ? <ActivityTooltip activity={activity} elapsedActivityTime={elapsedActivityTime} /> : profile.listening_to_spotify && spotify ? <SpotifyTooltip spotify={spotify} elapsedSpotifyTime={elapsedSpotifyTime} progressSpotify={progressSpotify} /> : null
                         }
                         animation="shift-away"
                         arrow={true}
                       >
-                        <p className="flex items-center text-black dark:text-white text-4xl font-semibold cursor-pointer">
-                          {profile.discord_user.global_name || `${header.title}†`}
-                        </p>
+                        <p className="flex items-center text-black dark:text-white text-4xl font-semibold cursor-pointer">{profile.discord_user.global_name || `${header.title}†`}</p>
                       </Tippy>
 
-                      {"offline" !== profile.discord_status && (
-                        <Tippy
-                          content={`${statuses[profile.discord_status].label} on Discord`}
-                          className={`text-${profile.discord_status}`}
-                          animation="shift-away"
-                          arrow={false}
-                        >
-                          <span
-                            className={`text-${profile.discord_status} px-2 py-1 font-normal rounded-md text-sm mt-2 lg:mt-0 lg:ml-2 flex items-center`}
-                          >
+                      {profile.discord_status !== 'offline' && (
+                        <Tippy content={`${statuses[profile.discord_status].label} on Discord`} className={`text-${profile.discord_status}`} animation="shift-away" arrow={false}>
+                          <span className={`text-${profile.discord_status} px-2 py-1 font-normal rounded-md text-sm mt-2 lg:mt-0 lg:ml-2 flex items-center`}>
                             <i className={`fa fa-circle text-${profile.discord_status} mr-2`} />
                             {statuses[profile.discord_status].label}
                           </span>
@@ -218,19 +195,13 @@ export const Profile = () => {
                       )}
                     </div>
 
-                    <p className="text-black dark:text-white text-md mt-3 text-center lg:text-left">
-                      {header.description}
-                    </p>
+                    <p className="text-black dark:text-white text-md mt-3 text-center lg:text-left">{header.description}</p>
                   </div>
 
                   <div className="order-first lg:order-last flex-shrink-0 relative w-[160px] h-[160px] rounded-full">
                     <img
                       alt="k4itrun"
-                      src={
-                        profile.discord_user.avatar
-                          ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}.webp?size=1024`
-                          : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`
-                      }
+                      src={profile.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`}
                       width="160"
                       height="160"
                       className="bg-neutral-700 w-[160px] h-[160px] rounded-full"
@@ -248,10 +219,7 @@ export const Profile = () => {
                   </div>
                 </div>
 
-                <span
-                  style={{ zIndex: "-1" }}
-                  className="text-black/10 dark:text-white/5 absolute bottom-3 left-7 text-xl sm:text-2xl md:text-4xl lg:text-3xl font-semibold"
-                >
+                <span style={{ zIndex: '-1' }} className="text-black/10 dark:text-white/5 absolute bottom-3 left-7 text-xl sm:text-2xl md:text-4xl lg:text-3xl font-semibold">
                   {header.shortDescription}
                 </span>
               </div>

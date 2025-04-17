@@ -1,8 +1,8 @@
-import { meta } from '@k4itrun/config';
+import { meta } from '@9ll-fun/config';
 import axios from 'axios';
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
-interface Repository {
+interface IRepository {
   name: string;
   full_name: string;
   owner: {
@@ -14,13 +14,13 @@ interface Repository {
   forks: number;
 }
 
-export async function GET(request: NextRequest) {
-  let repos: Repository[] | [] = [];
+export async function GET(_request: NextRequest) {
+  let repos: IRepository[] | [] = [];
   try {
     const res = await axios.get(`https://api.github.com/users/${meta.accounts.github.username}/repos`);
     repos = res?.data;
     return NextResponse.json(repos);
-  } catch (error) {
-    return NextResponse.json({ message: "Internal server error" }, { status: 500 });
+  } catch (_error) {
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }

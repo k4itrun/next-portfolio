@@ -1,1 +1,5 @@
-export const randomColor = (): string => '#' + Array.from({ length: 6 }, () => '0123456789ABCDEF'[Math.floor(Math.random() * 16)]).join('');
+export const randomColor = (): string => {
+  const hexDigits = '0123456789ABCDEF';
+  const color = Array.from({ length: 6 }, () => hexDigits[Math.floor(Math.random() * hexDigits.length)]).join('');
+  return `#${color}`;
+};

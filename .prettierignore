@@ -1,0 +1,28 @@
+# Node dependencies and output
+node_modules/
+dist/
+build/
+out/
+coverage/
+
+# Files that do not need formatting
+*.min.js
+*.d.ts
+*.log
+
+# Configuration files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Tool files
+*.config.js
+*.config.ts
+*.cjs
+*.mjs
+
+# System/IDE files
+.DS_Store
+.vscode/
+.idea/
+*.swp

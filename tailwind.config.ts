@@ -2,13 +2,16 @@ import tailwindTypography from "@tailwindcss/typography";
 import type { Config } from "tailwindcss";
 
 export default {
-  darkMode: 'class',
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-    "./src/components/**/*.{js,ts,jsx,tsx}",
-    "./config/config/*.{js,ts,jsx,tsx}",
-  ],
+  darkMode: ['class'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}",],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
       fontFamily: {
         sans: ['Lexend Deca', 'sans-serif'],
@@ -18,12 +21,6 @@ export default {
         color: {
           DEFAULT: 'var(--color-layout)',
           layout: 'var(--color-layout)',
-        },
-        white: {
-          DEFAULT: '#ffffff',
-        },
-        black: {
-          DEFAULT: '#000000',
         }
       },
     },
