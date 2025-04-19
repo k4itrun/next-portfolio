@@ -1,79 +1,87 @@
-# Node.js
-node_modules/
-package-lock.json
-!pnpm-lock.yaml
-yarn.lock
+# Logs
+*.log
+**/logs/
+lerna-debug.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.tern-port
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 
 # Build output
 dist/
 build/
+lib/
+.next/
+.nuxt/
+.vuepress/dist/
+.serverless/
 .out/
-.npm/
-**/storage/*.json
-**/db/*.json
-*.tgz
+public/
 
-# TypeScript
+# Coverage and test outputs
+coverage/
+.nyc_output/
+*.lcov
+.vitest/
+test-results/
+*.spec.ts.snap
+
+# Cache
 .cache/
+.rpt2_cache/
+.rts2_cache_*/
+.turbo/
+.eslintcache
+.prettier-cache
+.stylelintcache
 *.tsbuildinfo
-*.d.ts
-tsconfig.tsbuildinfo
+*.type-check-cache.json
+.pnpm-debug.log*
 
-# Logs
-logs/
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-CHANGELOG.md
+# Diagnostic reports
+report.*.json
 
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+# Dependency directories
+node_modules/
+bower_components/
+jspm_packages/
+.pnpm-store/
 
-# Editor/IDE
-.vscode/
-.idea/
+# Package manager state
+.yarn-integrity
+.pnp.*
+.yarn/
+
+# Misc
+.DS_Store
+.lock-wscript
+Thumbs.db
+*.bak
+*.orig
+*.tmp
+*.tgz
+*.pid
+*.pid.lock
+*.seed
 *.swp
 *.swo
-*.bak
-*.tmp
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# Local services
+.dynamodb/
 
-# Generated files and directories
-*.gz
-*.zip
-*.tar
-*.tar.gz
-*.tar.xz
-*.rar
-
-# Package build files
-*.tgz
-*.tar.gz
-*.tar.xz
-
-# Test output
-coverage/
-
-# Miscellaneous
-*.sql
-*.sqlite
-
-# Next.js / React
-.next/
-.next/cache/
-out/
-*.local
-*.vercel
-
-# Others
-.github/commitlint.md
+# Custom
+commitlint.md
+CHANGELOG.md
 **/\[id\]/

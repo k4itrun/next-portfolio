@@ -1,5 +1,5 @@
 // @ts-check
-import eslintConfig from '@k4i/eslint-config';
+import eslintConfig from '@k4i/config/eslint-config';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
