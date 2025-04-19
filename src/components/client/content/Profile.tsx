@@ -175,13 +175,7 @@ export const Profile = () => {
                 <div className="flex flex-col lg:flex-row justify-between w-full p-6 px-8 items-center h-full">
                   <div className="flex flex-col items-center lg:items-start lg:justify-start justify-center w-full mt-5 lg:mt-0">
                     <div className="flex flex-col lg:flex-row items-center lg:items-start">
-                      <Tippy
-                        content={
-                          activity && activity.name ? <ActivityTooltip activity={activity} elapsedActivityTime={elapsedActivityTime} /> : profile.listening_to_spotify && spotify ? <SpotifyTooltip spotify={spotify} elapsedSpotifyTime={elapsedSpotifyTime} progressSpotify={progressSpotify} /> : null
-                        }
-                        animation="shift-away"
-                        arrow={true}
-                      >
+                      <Tippy content={activity && activity.name ? <ActivityTooltip activity={activity} elapsedActivityTime={elapsedActivityTime} /> : profile.listening_to_spotify && spotify ? <SpotifyTooltip spotify={spotify} elapsedSpotifyTime={elapsedSpotifyTime} progressSpotify={progressSpotify} /> : null} animation="shift-away" arrow={true}>
                         <p className="flex items-center text-black dark:text-white text-4xl font-semibold cursor-pointer">{profile.discord_user.global_name || `${header.title}†`}</p>
                       </Tippy>
 
@@ -199,13 +193,7 @@ export const Profile = () => {
                   </div>
 
                   <div className="order-first lg:order-last flex-shrink-0 relative w-[160px] h-[160px] rounded-full">
-                    <img
-                      alt="k4itrun"
-                      src={profile.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`}
-                      width="160"
-                      height="160"
-                      className="bg-neutral-700 w-[160px] h-[160px] rounded-full"
-                    />
+                    <img alt="k4itrun" src={profile.discord_user.avatar ? `https://cdn.discordapp.com/avatars/${profile.discord_user.id}/${profile.discord_user.avatar}.webp?size=1024` : `https://cdn.discordapp.com/embed/avatars/${Math.floor(Math.random() * 6)}.png`} width="160" height="160" className="bg-neutral-700 w-[160px] h-[160px] rounded-full" />
                     <div className={`pulse-avatar-${profile.discord_status} rounded-full flex items-center absolute bottom-2 right-2`}>
                       <Tippy
                         //content={statuses[profile.discord_status].label}

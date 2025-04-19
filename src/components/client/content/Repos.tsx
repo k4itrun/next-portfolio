@@ -40,13 +40,7 @@ export const Repos = () => {
               ? repositories
                   .sort((a, b) => b.stargazers_count - a.stargazers_count)
                   .map((repo, index) => (
-                    <a
-                      key={index}
-                      href={`https://github.com/${repo.full_name}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group relative bg-gray-100 dark:bg-gray-600/5 dark:shadow-2xl border border-gray-300 hover:border-color-layout dark:hover:border-color-layout dark:border-gray-500/25 hover:shadow-xl rounded-lg p-2.5 transition-all duration-200"
-                    >
+                    <a key={index} href={`https://github.com/${repo.full_name}`} target="_blank" rel="noreferrer" className="group relative bg-gray-100 dark:bg-gray-600/5 dark:shadow-2xl border border-gray-300 hover:border-color-layout dark:hover:border-color-layout dark:border-gray-500/25 hover:shadow-xl rounded-lg p-2.5 transition-all duration-200">
                       <img alt={repo.full_name} src={toImgB64(`https://opengraph.githubassets.com/HEAD/${repo.full_name}`)} width="1024" className="rounded-lg" height="512" />
                       <p className="text-md text-gray-900 dark:text-white">
                         <span className="text-sm text-gray-600 dark:text-white/50 bg-gray-200 dark:bg-neutral-700/25 px-2 py-1 rounded-md mr-1">{repo.owner.login}</span>
