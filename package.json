@@ -11,11 +11,11 @@
     "hooks:init": "husky",
     "hooks:lint": "lint-staged",
     "ci:release": "semantic-release",
+    "ci:commitlint": "commitlint --from=HEAD~10",
     "format": "prettier . --write --cache --ignore-unknown",
     "format:check": "prettier . --check --ignore-unknown",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint:next": "next lint . --fix"
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -85,19 +85,7 @@
       "prettier . --write --cache --ignore-unknown"
     ],
     "*.{ts,tsx,js}": [
-      "git add -A",
       "eslint . --fix"
-    ]
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/git"
     ]
   },
   "packageManager": "pnpm@10.8.0",

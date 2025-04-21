@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Run lint-staged to only run ESLint and Prettier on changed files
+git add -A
 npx --no-install lint-staged || {
   echo "ERR: lint-staged failed."
   exit 1

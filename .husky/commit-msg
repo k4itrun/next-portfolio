@@ -1,6 +1,5 @@
 #!/bin/sh
 
-# Validates the commit message using commitlint
 if [ -z "$1" ]; then
   echo "ERR: No commit message file provided."
   exit 1

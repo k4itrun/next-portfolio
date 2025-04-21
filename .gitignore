@@ -29,6 +29,8 @@ lib/
 .serverless/
 .out/
 public/
+.contentlayer/
+next*.d.ts
 
 # Coverage and test outputs
 coverage/
@@ -81,7 +83,48 @@ Thumbs.db
 # Local services
 .dynamodb/
 
+# SQLite
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+*.sql
+*.bak
+*.sqlite-wal
+*.sqlite-shm
+
+# MongoDB
+dump/
+*.bson
+*.ns
+
+# PostgreSQL / MySQL dumps
+*.sql
+*.sql.gz
+*.pgsql
+*.mysql
+
+# Firebase local emulators
+firebase-debug.log
+firebase-export.json
+.firestore/
+
+# Prisma SQLite local
+prisma/dev.db
+prisma/*.sqlite
+prisma/*.sqlite3
+
+# Other backup files
+*.bak
+*.tmp
+*.old
+*.swp
+
+# Docker volumes (if using named volumes and storing db stuff)
+volumes/
+
 # Custom
 commitlint.md
 CHANGELOG.md
 **/\[id\]/
+**/\[db\]/
