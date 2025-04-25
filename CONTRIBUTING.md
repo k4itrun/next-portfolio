@@ -1,4 +1,4 @@
-# Contributing to [work-template](https://github.com/k4itrun/work-template)
+# Contributing to [next-portfolio](https://github.com/k4itrun/next-portfolio)
 
 Thank you for your interest in contributing to this project! We welcome all contributions — whether it's reporting bugs, suggesting new features, or submitting pull requests. Please read the following guidelines to ensure a smooth and effective contribution process.
 
