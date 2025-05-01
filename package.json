@@ -2,14 +2,14 @@
   "name": "portfolio",
   "description": "Portfolio built on Next.js",
   "version": "1.0.0",
+  "deprecated": true,
   "exports": null,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbo --port 4000",
+    "dev": "next dev --turbo",
     "start": "next start",
     "build": "next build",
-    "hooks:init": "husky",
-    "hooks:lint": "lint-staged",
+    "hook:init": "lefthook install",
     "ci:release": "semantic-release",
     "ci:commitlint": "commitlint --from=HEAD~10",
     "format": "prettier . --write --cache --ignore-unknown",
@@ -32,47 +32,43 @@
   },
   "homepage": "https://github.com/k4itrun/next-portfolio#readme",
   "dependencies": {
-    "@headlessui/react": "^2.2.0",
+    "@headlessui/react": "^2.2.2",
+    "@next/mdx": "^15.3.1",
     "@tippyjs/react": "^4.2.6",
-    "axios": "^1.7.7",
+    "axios": "^1.9.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "lucide-react": "^0.468.0",
-    "next": "15.0.3",
-    "next-nprogress-bar": "^2.4.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-parallax-tilt": "^1.7.253",
-    "swr": "^2.2.5",
-    "sync-fetch": "^0.5.2",
-    "tailwind-merge": "^2.5.5",
+    "lucide-react": "^0.503.0",
+    "next": "15.3.1",
+    "next-nprogress-bar": "^2.4.7",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-parallax-tilt": "^1.7.293",
+    "swr": "^2.3.3",
+    "sync-fetch": "0.6.0-2",
+    "tailwind-merge": "^3.2.0",
     "tinycolor2": "^1.6.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
     "@commitlint/types": "^19.8.0",
-    "@k4i/config": "^1.0.1",
-    "@next/mdx": "^15.3.1",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/exec": "^7.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/release-notes-generator": "^14.0.3",
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^22.14.1",
-    "@types/react": "^18.3.12",
+    "@dotenvx/dotenvx": "^1.42.0",
+    "@k4i/config": "^1.0.2",
+    "@k4i/utils": "^1.0.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/react": "^19.1.2",
     "@types/sync-fetch": "^0.4.3",
     "@types/tinycolor2": "^1.4.6",
     "autoprefixer": "^10.4.21",
-    "eslint": "9.14.0",
+    "eslint": "9.25.1",
     "husky": "^9.1.7",
+    "lefthook": "^1.11.12",
     "lint-staged": "^15.5.1",
-    "postcss": "^8.4.47",
+    "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "semantic-release": "^24.2.3",
-    "tailwindcss": "^3.4.14",
-    "typescript": "^5.6.3"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3"
   },
   "browserslist": [
     ">0.3%",
@@ -80,19 +76,12 @@
     "not dead",
     "not op_mini all"
   ],
-  "lint-staged": {
-    "*.{ts,tsx,js,json,md}": [
-      "prettier . --write --cache --ignore-unknown"
-    ],
-    "*.{ts,tsx,js}": [
-      "eslint . --fix"
-    ]
-  },
-  "packageManager": "pnpm@10.8.0",
+  "packageManager": "pnpm@10.10.0",
   "pnpm": {
     "onlyBuiltDependencies": [
       "esbuild",
-      "sharp"
+      "sharp",
+      "unrs-resolver"
     ]
   }
 }

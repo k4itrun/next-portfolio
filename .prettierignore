@@ -1,28 +1,25 @@
-# Node dependencies and output
-node_modules/
-dist/
-build/
-out/
-coverage/
+package*
+pnpm*
+tsconfig*
+jsconfig*
+.swcrc
 
-# Files that do not need formatting
-*.min.js
-*.d.ts
-*.log
+# Docs and markdown files
+*.md
+*.mdx
 
-# Configuration files
-package-lock.json
-pnpm-lock.yaml
-yarn.lock
-
-# Tool files
-*.config.js
-*.config.ts
-*.cjs
-*.mjs
-
-# System/IDE files
-.DS_Store
+# Common directories to ignore
+node_modules/**
+dist/**
+build/**
+coverage/**
+.next/**
+.git/
 .vscode/
 .idea/
-*.swp
+
+# Generated and binary files
+*.min.*
+
+# Custom
+turbo*

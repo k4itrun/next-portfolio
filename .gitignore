@@ -1,6 +1,6 @@
-# Logs
+Logs
 *.log
-**/logs/
+logs/*
 lerna-debug.log*
 npm-debug.log*
 yarn-debug.log*
@@ -31,6 +31,7 @@ lib/
 public/
 .contentlayer/
 next*.d.ts
+.husky/
 
 # Coverage and test outputs
 coverage/
@@ -124,7 +125,4 @@ prisma/*.sqlite3
 volumes/
 
 # Custom
-commitlint.md
-CHANGELOG.md
-**/\[id\]/
-**/\[db\]/
+^(?i)(commit*\.md|change*\.md|.*\/\[id\]\/.*|.*\/\[db\]\/.*)$
