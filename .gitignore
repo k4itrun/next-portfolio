@@ -125,4 +125,7 @@ prisma/*.sqlite3
 volumes/
 
 # Custom
-^(?i)(commit*\.md|change*\.md|.*\/\[id\]\/.*|.*\/\[db\]\/.*)$
+*[Cc]ommit*.md
+*[Cc]hange*.md
+**/\[id\]/
+**/\[db\]/
