@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "description": "Portfolio built on Next.js",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "deprecated": true,
   "exports": null,
   "type": "module",
